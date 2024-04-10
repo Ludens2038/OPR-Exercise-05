@@ -1,13 +1,13 @@
 package at.fhooe.sail.mc.Uebung05.Aufgabe01;
 
-public class BinarySearchTree<T extends Comparable<T>> {
+public class BinarySearchTree<AbstractMember extends Comparable<AbstractMember>> {
 	/** Inner class for the binary tree node. **/
 	protected class BinaryTreeNode {
 		public BinaryTreeNode left;
 		public BinaryTreeNode right;
-		public T data;
+		public AbstractMember data;
 
-		public BinaryTreeNode(T elem) {
+		public BinaryTreeNode(AbstractMember elem) {
 			data = elem;
 			left = null;
 			right = null;
@@ -27,7 +27,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Inserts the given element. Duplicate elements are not allowed. Returns true
 	 * if insertion was successful, false otherwise.
 	 */
-	public boolean insert(T elem) {
+	public boolean insert(AbstractMember elem) {
 		// if tree is empty
 		BinaryTreeNode n = new BinaryTreeNode(elem);
 		if (root == null) {
@@ -72,7 +72,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Searches for the (first) element with the given key. Returns true if it could
 	 * be found, false otherwise.
 	 */
-	public boolean find(T key) {
+	public boolean find(AbstractMember key) {
 		BinaryTreeNode p = root;
 		if (root == null) {
 			return false;
@@ -95,7 +95,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Removes the element with the given key. Returns true if the key could be
 	 * found (and removed), false otherwise.
 	 */
-	public boolean remove(T key) {
+	public boolean remove(AbstractMember key) {
 		// if tree is empty or key was not found
 		if (!this.find(key)) {
 			return false;
@@ -185,7 +185,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Returns the parent element of the given key. Integer.MIN_VALUE if no parent
 	 * can be found.
 	 */
-	public T getParent(T key) {
+	public AbstractMember getParent(AbstractMember key) {
 		// if tree is empty
 		if (root == null && key == root.data) {
 			return null;
@@ -213,8 +213,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Returns the elements of the tree in ascending (inorder traversal) or
 	 * descending (reverse inorder traversal) order.
 	 */
-	public T[] toArray(boolean ascending) {
-		T[] sorted = (T[]) new Comparable[this.size];
+	public AbstractMember[] toArray(boolean ascending) {
+		AbstractMember[] sorted = (AbstractMember[]) new Comparable[this.size];
 		// index, explained in postOrder
 		Index i = new Index();
 		// calling helper method
@@ -223,7 +223,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// helper method to separate ascending and descending and copies to array
-	private void traverseOrdered(BinaryTreeNode node, T[] array, Index i, boolean ascending) {
+	private void traverseOrdered(BinaryTreeNode node, AbstractMember[] array, Index i, boolean ascending) {
 		// in case parameter in caller method was set to true
 		if (ascending) {
 			// if tree is empty
@@ -250,8 +250,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/** Returns the elements of the tree (postorder traversal). */
-	public T[] toArrayPostOrder() {
-		T[] postOrder = (T[]) new Comparable[this.size];
+	public AbstractMember[] toArrayPostOrder() {
+		AbstractMember[] postOrder = (AbstractMember[]) new Comparable[this.size];
 		// Index created to track position where to insert from node to array
 		Index i = new Index();
 		// call helper method
@@ -260,7 +260,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// helper method for traversion and inserting into array
-	private void traversePostOrder(BinaryTreeNode node, T[] array, Index i) {
+	private void traversePostOrder(BinaryTreeNode node, AbstractMember[] array, Index i) {
 		// if tree is empty
 		if (node == null) {
 			return;
@@ -274,15 +274,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/** Returns the elements of the tree (preorder traversal). */
-	public T[] toArrayPreOrder() {
-		T[] preOrder = (T[]) new Comparable[this.size];
+	public AbstractMember[] toArrayPreOrder() {
+		AbstractMember[] preOrder = (AbstractMember[]) new Comparable[this.size];
 		Index i = new Index();
 		traversePreOrder(this.root, preOrder, i);
 		return preOrder;
 	}
 
 	// helper method for traversing in preOrder
-	private void traversePreOrder(BinaryTreeNode node, T[] array, Index i) {
+	private void traversePreOrder(BinaryTreeNode node, AbstractMember[] array, Index i) {
 		if (node == null) {
 			return;
 		}
@@ -296,7 +296,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Returns largest number stored in the tree. Integer.MIN_VALUE if no largest
 	 * element can be found
 	 */
-	public T max() {
+	public AbstractMember max() {
 		// if tree is empty
 		if (root == null) {
 			return null;
@@ -313,7 +313,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 * Returns smallest number stored in the tree. Integer.MIN_VALUE if no smallest
 	 * element can be found
 	 */
-	public T min() {
+	public AbstractMember min() {
 		// if tree is empty
 		if (root == null) {
 			return null;

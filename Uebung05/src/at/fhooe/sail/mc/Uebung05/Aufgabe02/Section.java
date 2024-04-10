@@ -24,7 +24,12 @@ public class Section extends AbstractMember {
 
 	@Override
 	public double getIncome() {
-		return 0;
+		AbstractMember[] member = (AbstractMember[]) tree.toArray(true);
+		double income = 0.0;
+		for(int i = 0; i < member.length; i++) {
+			income += member[i].getIncome();
+			}
+		return income;
 	}
 
 	@Override

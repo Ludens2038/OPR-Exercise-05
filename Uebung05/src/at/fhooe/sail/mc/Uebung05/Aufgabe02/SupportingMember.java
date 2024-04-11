@@ -15,10 +15,4 @@ public class SupportingMember extends AbstractMember {
 	public double getCost() {
 		return 15;
 	}
-
-	@Override
-	public double getSurplus() {
-		return getIncome() - getCost();
-	}
-
 }

@@ -15,10 +15,4 @@ public class Trainer extends ActiveMember{
 	public double getCost() {
 		return activityLevel * 40;
 	}
-
-	@Override
-	public double getSurplus() {
-		return getIncome() - getCost();
-	}
-
 }

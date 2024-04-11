@@ -15,10 +15,4 @@ public class TopAthlete extends ActiveMember{
 	public double getCost() {
 		return activityLevel * 5;
 	}
-
-	@Override
-	public double getSurplus() {
-		return getIncome() - getCost();
-	}
-
 }

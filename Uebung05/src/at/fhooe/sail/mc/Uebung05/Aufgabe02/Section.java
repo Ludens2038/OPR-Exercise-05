@@ -4,6 +4,7 @@ import at.fhooe.sail.mc.Uebung05.Aufgabe01.*;
 
 //subclass of the abstract member for sections
 public class Section extends AbstractMember {
+	private static int indent = 0;
 
 	// binary search tree to store the members of the section in a sorted order
 	private BinarySearchTree<AbstractMember> tree = new BinarySearchTree();
@@ -73,12 +74,13 @@ public class Section extends AbstractMember {
 		 * creating a string builder to build the string representation of the section
 		 * adding the name, income, cost, surplus and the members of the section
 		 */
+
 		StringBuilder builder = new StringBuilder();
-		builder.append("Name: " + name).append("\n");
-		builder.append("Einnahmen: €" + getIncome()).append("\n");
-		builder.append("Ausgaben: €" + getCost()).append("\n");
-		builder.append("Überschuss: €" + getSurplus()).append("\n").append("\n");
-		int spacer = 0;
+		builder.append(getIndent(indent)).append("Name: " + name).append("\n");
+		builder.append(getIndent(indent)).append("Einnahmen: €" + getIncome()).append("\n");
+		builder.append(getIndent(indent)).append("Ausgaben: €" + getCost()).append("\n");
+		builder.append(getIndent(indent)).append("Überschuss: €" + getSurplus()).append("\n").append("\n");
+		indent += 2;
 		// iterating through the members of the section and adding their string
 		// representation
 		for (int i = 0; i < member.length; i++) {
@@ -87,11 +89,20 @@ public class Section extends AbstractMember {
 		return builder.toString();
 	}
 
+	public String getIndent(int indent) {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < indent; i++) {
+			builder.append(" ");
+		}
+		indent -= 2;
+		return builder.toString();
+	}
+
 	public static void main(String[] args) {
 		Section s = new Section("Dodlschach");
 		s.addMember(new ChairMember("Haris", 100));
 		s.addMember(new HonoraryMember("Nikolaus"));
-		s.addMember(new TopAthlete("Axel", 10));
+		s.addMember(new TopAthlete("Axel", 100));
 
 		Section s2 = new Section("Schach");
 		s2.addMember(new ChairMember("Hermann", 100));

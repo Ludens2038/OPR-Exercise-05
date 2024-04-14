@@ -65,7 +65,7 @@ public class Section extends AbstractMember {
 
     @Override
     //ovveride the toString method of the abstract member to get the string representation of the section
-    //kind of readable :D hope it is okay
+    //kind of readable
     public String toString(boolean sorted) {
         Comparable<AbstractMember>[] member = tree.toArray(sorted);
         StringBuilder builder = new StringBuilder();

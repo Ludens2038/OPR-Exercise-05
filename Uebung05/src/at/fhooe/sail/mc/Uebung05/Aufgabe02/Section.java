@@ -64,25 +64,22 @@ public class Section extends AbstractMember {
     }
 
     @Override
-    public String toString() {
-        return toString(true);
-    }
-
-
-    @Override
+    //ovveride the toString method of the abstract member to get the string representation of the section
     public String toString(boolean sorted) {
         Comparable<AbstractMember>[] member = tree.toArray(sorted);
         StringBuilder builder = new StringBuilder();
         builder.append("Union: " + name + ", Income: " + getIncome() + ", Cost: " + getCost() + ", Surplus: " + getSurplus() + "\n");
 
+        // iterating through the members of the section and adding their string representation
         for (int i = 0; i < member.length; i++) {
+            // checking if the member is a section or an abstract member
             if (member[i] instanceof Section) {
                 indent++;
                 builder.append(getIndent() + ((Section) member[i]).toString(sorted));
                 indent--;
-            } else if (member[i] instanceof AbstractMember){
+            } else if (member[i] instanceof AbstractMember) {
                 indent++;
-                builder.append(getIndent() + ((AbstractMember)member[i]).toString(true));
+                builder.append(getIndent() + ((AbstractMember) member[i]).toString(true));
                 indent--;
             }
         }
@@ -90,6 +87,7 @@ public class Section extends AbstractMember {
         return builder.toString();
     }
 
+    // method to get the indent for the string representation
     private String getIndent() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < indent; i++) {
@@ -138,6 +136,12 @@ public class Section extends AbstractMember {
         vereinHagenberg.addMember(Dodlschach);
         vereinHagenberg.addMember(Fußball);
         vereinHagenberg.addMember(Landeshauptmann);
+
+        Section Frauenfußball = new Section("Frauenfußball");
+        Frauenfußball.addMember(new TopAthlete("Lena", 10));
+        Frauenfußball.addMember(new TopAthlete("Sarah", 10));
+
+        Fußball.addMember(Frauenfußball);
 
         System.out.println(vereinHagenberg.toString(true));
     }

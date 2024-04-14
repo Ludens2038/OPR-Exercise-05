@@ -21,11 +21,11 @@ public abstract class AbstractMember implements Comparable<AbstractMember> {
 		return getIncome() - getCost();
 	}
 	
-//	@Override
-//	//standard toString method calling the toString method with the parameter true
-//	public String toString() {
-//		return toString(true);
-//	}
+	@Override
+	//standard toString method calling the toString method with the parameter true
+	public String toString() {
+		return toString(true);
+	}
 	
 	//method for getting the string representation of the member with the parameter for the ascending order
 	public String toString(boolean ascending) {
